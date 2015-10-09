@@ -336,7 +336,11 @@ class VectorDeserializerPlugin
 
   @:noUsing
   @:dox(hide)
-  public static inline function arrayToVector<Element>(a:Array<Element>):Vector<Element> return
+  public static
+  #if (java || csharp || flash || as3)
+  inline
+  #end
+  function arrayToVector<Element>(a:Array<Element>):Vector<Element> return
   {
     var v = new haxe.ds.Vector<Element>(a.length);
     for (i in 0...a.length)

@@ -337,7 +337,7 @@ class VectorDeserializerPlugin
   @:noUsing
   @:dox(hide)
   public static
-  #if (java || csharp || flash || as3)
+  #if (java || cs || flash || as3)
   inline
   #end
   function arrayToVector<Element>(a:Array<Element>):Vector<Element> return

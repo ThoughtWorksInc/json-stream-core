@@ -23,33 +23,36 @@ for (c <- Seq(Compile, Test)) yield {
     Seq("-D", "scala")
 }
 
+val haxelibs = Map(
+  "continuation" -> DependencyVersion.SpecificVersion("1.3.2"),
+  "HUGS" -> DependencyVersion.SpecificVersion("0.3.0")
+)
+
+haxelibDependencies ++= haxelibs
+
 for (c <- AllTargetConfigurations ++ AllTestTargetConfigurations) yield {
-  haxeOptions in c ++=
-    Seq(
-      "-D", "no-root",
-      "-D", "json_stream_no_dot",
-      "-lib", "continuation")
+  haxeOptions in c ++= haxelibOptions(haxelibs)
+}
+
+for (c <- AllTargetConfigurations ++ AllTestTargetConfigurations) yield {
+  haxeOptions in c ++= Seq("-dce", "no")
 }
 
 for (c <- Seq(CSharp, TestCSharp)) yield {
-  haxeOptions in c ++= Seq("-lib", "HUGS", "-D", "CF")
+  haxeOptions in c ++= Seq("-D", "CF", "-D", "WITHOUTUNITY")
 }
 
 releaseUseGlobalVersion := false
 
 releaseCrossBuild := true
 
-haxeOptions in CSharp ++= Seq("-D", "unity", "-D", "dll")
+haxeOptions in CSharp ++= Seq("-D", "dll")
 
-haxeOptions in TestCSharp ++= Seq("-D", "WITHOUTUNITY", "-main", "com.qifun.jsonStream.Main")
-
-haxeOptions in Test ++= Seq("-main", "com.qifun.jsonStream.Main")
+for (c <- AllTestTargetConfigurations) yield {
+  haxeOptions in c ++= Seq("-main", "com.qifun.jsonStream.Main")
+}
 
 haxeOptions in Compile ++= Seq("--macro", "com.qifun.util.Patcher.noExternalDoc()")
-
-haxeOptions in Compile ++= Seq("-dce", "no")
-
-haxeOptions in Test ++= Seq("-dce", "no")
 
 javacOptions in Compile in compile += "-Xlint:-deprecation"
 
@@ -67,7 +70,7 @@ libraryDependencies += "org.reactivemongo" %% "reactivemongo-bson" % "0.11.6"
 
 crossScalaVersions := Seq("2.10.4", "2.11.2")
 
-doc in Compile :=  {
+doc in Compile := {
   (doc in Compile).result.value.toEither match {
     case Left(_) => {
       // Ignore error
@@ -87,7 +90,7 @@ homepage := Some(url(s"https://github.com/qifun/${name.value}"))
 
 startYear := Some(2014)
 
-licenses := Seq("Apache License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
+licenses := Seq("Apache" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
 publishTo <<= (isSnapshot) { isSnapshot: Boolean =>
   if (isSnapshot)
@@ -99,6 +102,7 @@ publishTo <<= (isSnapshot) { isSnapshot: Boolean =>
 releasePublishArtifactsAction := PgpKeys.publishSigned.value
 
 import ReleaseTransformations._
+
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
   inquireVersions,
@@ -107,6 +111,7 @@ releaseProcess := Seq[ReleaseStep](
   setReleaseVersion,
   commitReleaseVersion,
   tagRelease,
+  releaseStepTask(publish in Haxe),
   publishArtifacts,
   setNextVersion,
   commitNextVersion,
@@ -141,3 +146,12 @@ pomExtra :=
     </developer>
   </developers>
 
+haxelibContributors := Seq("Atry")
+
+haxelibReleaseNote := "Initial release to haxelib"
+
+haxelibTags ++= Seq(
+  "cross", "cpp", "cs", "flash", "java", "javascript", "js", "neko", "php", "python", "nme",
+  "marshaller", "serialization", "serializer", "utility",
+  "json", "bson"
+)

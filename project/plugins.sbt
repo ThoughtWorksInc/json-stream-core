@@ -1,6 +1,6 @@
 addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.0.0")
 
-addSbtPlugin("com.thoughtworks.microbuilder" % "sbt-haxe" % "2.0.0")
+addSbtPlugin("com.thoughtworks.microbuilder" % "sbt-haxe" % "2.0.1")
 
 lazy val root = project in file(".") dependsOn `sbt-release`
 

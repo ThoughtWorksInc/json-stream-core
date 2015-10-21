@@ -14,7 +14,6 @@ jdk:
 env:
   matrix:
     - SBT_COMMAND=test;test:run HAXE_TARGET=java HAXE_FILE=haxe_2015-05-12_master_77d171b.tar.gz
-    - SBT_COMMAND=test;test:run HAXE_TARGET=java HAXE_FILE=haxe_2014-10-21_development_a05b532.tar.gz
     - SBT_COMMAND=test-csharp:run HAXE_TARGET=cs HAXE_FILE=haxe_2015-05-12_master_77d171b.tar.gz
 
 before_install:

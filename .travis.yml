@@ -29,7 +29,7 @@ before_install:
  - if [[ "$HAXE_TARGET" = "java" ]]; then travis_retry haxelib install hxjava --always; fi
  - if [[ "$HAXE_TARGET" = "cs" ]]; then travis_retry sudo apt-get install mono-devel; fi
  - if [[ "$HAXE_TARGET" = "cs" ]]; then travis_retry haxelib install hxcs --always; fi
- - travis_retry haxelib install HUGS 0.3.0 --always
+ - travis_retry haxelib install microbuilder-HUGS 2.0.0 --always
  - travis_retry haxelib install continuation 1.3.2 --always
 
 script: sbt ";++$TRAVIS_SCALA_VERSION;$SBT_COMMAND"

@@ -49,7 +49,7 @@ releaseCrossBuild := true
 haxeOptions in CSharp ++= Seq("-D", "dll")
 
 for (c <- AllTestTargetConfigurations) yield {
-  haxeOptions in c ++= Seq("-main", "com.qifun.jsonStream.Main")
+  haxeOptions in c ++= Seq("-main", "jsonStream.Main")
 }
 
 haxeOptions in Compile ++= Seq("--macro", "com.qifun.util.Patcher.noExternalDoc()")
@@ -82,11 +82,11 @@ doc in Compile := {
   }
 }
 
-organization := "com.qifun"
+organization := "com.thoughtworks.microbuilder"
 
 name := "json-stream"
 
-homepage := Some(url(s"https://github.com/qifun/${name.value}"))
+homepage := Some(url(s"https://github.com/ThoughtWorksInc/${name.value}"))
 
 startYear := Some(2014)
 
@@ -120,9 +120,9 @@ releaseProcess := Seq[ReleaseStep](
 )
 
 scmInfo := Some(ScmInfo(
-  url(s"https://github.com/qifun/${name.value}"),
-  s"scm:git:git://github.com/qifun/${name.value}.git",
-  Some(s"scm:git:git@github.com:qifun/${name.value}.git")))
+  url(s"https://github.com/ThoughtWorksInc/${name.value}"),
+  s"scm:git:git://github.com/ThoughtWorksInc/${name.value}.git",
+  Some(s"scm:git:git@github.com:ThoughtWorksInc/${name.value}.git")))
 
 pomExtra :=
   <developers>

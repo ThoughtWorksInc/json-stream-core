@@ -1,20 +1,4 @@
-enablePlugins(HaxeJavaPlugin)
-
-enablePlugins(HaxeCSharpPlugin)
-
-enablePlugins(HaxeCppPlugin)
-
-enablePlugins(HaxeFlashPlugin)
-
-enablePlugins(HaxeAs3Plugin)
-
-enablePlugins(HaxePythonPlugin)
-
-enablePlugins(HaxeNekoPlugin)
-
-enablePlugins(HaxePhpPlugin)
-
-enablePlugins(HaxeJsPlugin)
+enablePlugins(AllHaxePlugins)
 
 resolvers in ThisBuild += "Typesafe repository releases" at "http://repo.typesafe.com/typesafe/releases/"
 

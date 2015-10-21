@@ -25,7 +25,7 @@ for (c <- Seq(Compile, Test)) yield {
 
 val haxelibs = Map(
   "continuation" -> DependencyVersion.SpecificVersion("1.3.2"),
-  "HUGS" -> DependencyVersion.SpecificVersion("0.3.0")
+  "microbuilder-HUGS" -> DependencyVersion.SpecificVersion("2.0.0")
 )
 
 haxelibDependencies ++= haxelibs

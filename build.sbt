@@ -124,27 +124,27 @@ scmInfo := Some(ScmInfo(
   s"scm:git:git://github.com/ThoughtWorksInc/${name.value}.git",
   Some(s"scm:git:git@github.com:ThoughtWorksInc/${name.value}.git")))
 
-pomExtra :=
-  <developers>
-    <developer>
-      <id>Atry</id>
-      <name>杨博 (Yang Bo)</name>
-      <timezone>+8</timezone>
-      <email>pop.atry@gmail.com</email>
-    </developer>
-    <developer>
-      <id>zxiy</id>
-      <name>张修羽 (Zhang Xiuyu)</name>
-      <timezone>+8</timezone>
-      <email>95850845@qq.com</email>
-    </developer>
-    <developer>
-      <id>chank</id>
-      <name>方里权 (Fang Liquan)</name>
-      <timezone>+8</timezone>
-      <email>fangliquan@qq.com</email>
-    </developer>
-  </developers>
+
+developers := List(
+  Developer(
+    "Atry",
+    "杨博 (Yang Bo)",
+    "pop.atry@gmail.com",
+    url("https://github.com/Atry")
+  ),
+  Developer(
+    "zxiy",
+    "张修羽 (Zhang Xiuyu)",
+    "95850845@qq.com",
+    url("https://github.com/zxiy")
+  ),
+  Developer(
+    "chank",
+    "方里权 (Fang Liquan)",
+    "fangliquan@qq.com",
+    url("https://github.com/chank")
+  )
+)
 
 haxelibContributors := Seq("Atry")
 

@@ -13,8 +13,13 @@ jdk:
 
 env:
   matrix:
+    # Haxe 3.2.0
     - SBT_COMMAND=test;test:run HAXE_TARGET=java HAXE_FILE=haxe_2015-05-12_master_77d171b.tar.gz
     - SBT_COMMAND=test-csharp:run HAXE_TARGET=cs HAXE_FILE=haxe_2015-05-12_master_77d171b.tar.gz
+    
+    # Haxe 3.2.1
+    - SBT_COMMAND=test;test:run HAXE_TARGET=java HAXE_FILE=haxe_2015-10-12_master_deab442.tar.gz
+    - SBT_COMMAND=test-csharp:run HAXE_TARGET=cs HAXE_FILE=haxe_2015-10-12_master_deab442.tar.gz
 
 before_install:
  - travis_retry sudo add-apt-repository ppa:eyecreate/haxe -y

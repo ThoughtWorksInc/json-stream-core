@@ -76,13 +76,6 @@ startYear := Some(2014)
 
 licenses := Seq("Apache" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
-publishTo <<= (isSnapshot) { isSnapshot: Boolean =>
-  if (isSnapshot)
-    Some("snapshots" at "https://oss.sonatype.org/content/repositories/snapshots")
-  else
-    Some("releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2")
-}
-
 releasePublishArtifactsAction := PgpKeys.publishSigned.value
 
 import ReleaseTransformations._

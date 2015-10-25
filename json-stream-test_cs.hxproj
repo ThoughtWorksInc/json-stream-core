@@ -24,7 +24,7 @@
     <option directives="real-position&#xA;WITHOUTUNITY&#xA;json_stream_no_dot" />
     <option flashStrict="True" />
     <option noInlineOnDebug="False" />
-    <option mainClass="com.qifun.jsonStream.ItemTest" />
+    <option mainClass="jsonStream.ItemTest" />
     <option enabledebug="True" />
     <option additional="" />
   </build>

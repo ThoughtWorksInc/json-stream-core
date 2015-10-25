@@ -24,7 +24,7 @@
     <option directives="no-inline&#xA;no-opt" />
     <option flashStrict="True" />
     <option noInlineOnDebug="True" />
-    <option mainClass="com.qifun.jsonStream.Main" />
+    <option mainClass="jsonStream.Main" />
     <option enabledebug="True" />
     <option additional="" />
   </build>

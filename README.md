@@ -35,11 +35,11 @@ JSON Stream is written in Haxe, which is able to compile to many other programmi
 
 ### `JsonStream`
 
-`com.qifun.jsonStream.JsonStream` is the universal intermedia type for most of conversions. It is a hierarchical iterator created from an object, an input stream or a string. And then, the `JsonStream` is able to produce another object, output stream, or string.
+`jsonStream.JsonStream` is the universal intermedia type for most of conversions. It is a hierarchical iterator created from an object, an input stream or a string. And then, the `JsonStream` is able to produce another object, output stream, or string.
 
 ### Dynamically-typed objects
 
-`com.qifun.jsonStream.RawJson` is the in-memory type that represents dynamically-typed JSON/BSON objects.
+`jsonStream.RawJson` is the in-memory type that represents dynamically-typed JSON/BSON objects.
 
 ``` haxe
 // Example.hx
@@ -70,7 +70,7 @@ The above example may be written in languages other than Haxe, too.
 
 ### Statically-typed Serialization / Deserialization
 
-`JsonStream`s are able to convert from / to statically-typed class instances. The conversion functions can be generated from `com.qifun.jsonStream.JsonDeserializerGenerator` and `com.qifun.jsonStream.JsonSerializerGenerator`.
+`JsonStream`s are able to convert from / to statically-typed class instances. The conversion functions can be generated from `jsonStream.JsonDeserializerGenerator` and `jsonStream.JsonSerializerGenerator`.
 
 ``` haxe
 // MyModule.hx
@@ -86,23 +86,23 @@ The above example may be written in languages other than Haxe, too.
 ``` haxe
 // Conversions.hx
 
-using com.qifun.jsonStream.Plugins;
+using jsonStream.Plugins;
 
-@:build(com.qifun.jsonStream.JsonDeserializer.generateDeserializer([ "MyModule" ]))
+@:build(jsonStream.JsonDeserializer.generateDeserializer([ "MyModule" ]))
 class MyDeserializer {}
 
-@:build(com.qifun.jsonStream.JsonSerializer.generateSerializer([ "MyModule" ]))
+@:build(jsonStream.JsonSerializer.generateSerializer([ "MyModule" ]))
 class MySerializer {}
 ```
 
 ``` haxe
 // Sample.hx
 
-import com.qifun.jsonStream.io.PrettyTextPrinter;
-import com.qifun.jsonStream.io.TextParser;
-import com.qifun.jsonStream.JsonDeserializer;
-import com.qifun.jsonStream.JsonSerializer;
-using com.qifun.jsonStream.Plugins;
+import jsonStream.io.PrettyTextPrinter;
+import jsonStream.io.TextParser;
+import jsonStream.JsonDeserializer;
+import jsonStream.JsonSerializer;
+using jsonStream.Plugins;
 using Conversions;
 
 class Sample

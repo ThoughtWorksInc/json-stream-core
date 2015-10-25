@@ -25,7 +25,7 @@
     <option directives="no-inline&#xA;stateless_future&#xA;no-compilation&#xA;scala" />
     <option flashStrict="True" />
     <option noInlineOnDebug="True" />
-    <option mainClass="com.qifun.jsonStream.Main" />
+    <option mainClass="jsonStream.Main" />
     <option enabledebug="True" />
     <option additional="-java-lib %USERPROFILE%\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar&#xA;-java-lib %USERPROFILE%\.ivy2\cache\org.scala-lang\scala-library\jars\scala-library-2.11.1.jar&#xA;-java-lib ..\stateless-future\target\scala-2.11\classes&#xA;-java-lib ..\stateless-future-util\target\scala-2.11\classes" />
   </build>

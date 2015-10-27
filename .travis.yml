@@ -43,7 +43,6 @@ scala:
 
 jdk:
   - oraclejdk8
-  - oraclejdk7
   - openjdk7
   # Disabled due to https://github.com/HaxeFoundation/haxe/issues/4220
   # - openjdk6

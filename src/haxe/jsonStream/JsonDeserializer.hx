@@ -177,6 +177,7 @@ enum JsonDeserializerError
   NOT_ENOUGH_FIELDS<Element>(iterator:Iterator<Element>, expected:Int, actual:Int);
   UNMATCHED_JSON_TYPE(stream:JsonStream, expected: Array<String>);
   NO_DESERIALIZER_FOR_TYPE(fullyTypeName:String);
+  ILLEGAL_NUMBER_FORMAT(text:String);
 }
 
 #if macro

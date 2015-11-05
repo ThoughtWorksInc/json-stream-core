@@ -19,6 +19,9 @@
 
 package jsonStream;
 
+/**
+ * Blahblah `class MySample {}` **bold text**
+ **/
 @:final
 class CustomJsonFieldName
 {

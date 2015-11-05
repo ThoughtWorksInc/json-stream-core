@@ -123,6 +123,13 @@ class UIntDeserializerPlugin
   {
     switch (self.underlying)
     {
+      case STRING(value):
+        var floatValue = Std.parseFloat(value);
+        if (Math.isNaN(floatValue)) {
+          throw JsonDeserializerError.ILLEGAL_NUMBER_FORMAT(value);
+        } else {
+          cast floatValue;
+        }
       case jsonStream.JsonStream.NUMBER(value):
         cast value;
       case INT32(value):
@@ -130,7 +137,7 @@ class UIntDeserializerPlugin
       case NULL:
         null;
       case stream:
-        throw JsonDeserializerError.UNMATCHED_JSON_TYPE(stream, [ "NUMBER", "NULL"]);
+        throw JsonDeserializerError.UNMATCHED_JSON_TYPE(stream, [ "STRING", "NUMBER", "NULL"]);
     }
   }
 }
@@ -143,6 +150,13 @@ class IntDeserializerPlugin
   {
     switch (self.underlying)
     {
+      case STRING(value):
+        var intValue = Std.parseInt(value);
+        if (intValue == null) {
+          throw JsonDeserializerError.ILLEGAL_NUMBER_FORMAT(value);
+        } else {
+          intValue;
+        }
       case NUMBER(value):
         cast value;
       case INT32(value):
@@ -150,7 +164,7 @@ class IntDeserializerPlugin
       case NULL:
         null;
       case stream:
-        throw JsonDeserializerError.UNMATCHED_JSON_TYPE(stream, [ "NUMBER", "INT32", "NULL"]);
+        throw JsonDeserializerError.UNMATCHED_JSON_TYPE(stream, [ "STRING", "NUMBER", "INT32", "NULL"]);
     }
   }
 }
@@ -163,12 +177,14 @@ class IntDeserializerPlugin
     {
       switch (self.underlying)
       {
+        case jsonStream.JsonStream.STRING(value):
+          Std.parseFloat(value);
         case jsonStream.JsonStream.NUMBER(value):
           value;
         case NULL:
           null;
         case stream:
-          throw JsonDeserializerError.UNMATCHED_JSON_TYPE(stream, [ "NUMBER", "NULL"]);
+          throw JsonDeserializerError.UNMATCHED_JSON_TYPE(stream, [ "STRING", "NUMBER", "NULL"]);
       }
     }
   }
@@ -181,12 +197,14 @@ class FloatDeserializerPlugin
   {
     switch (self.underlying)
     {
+      case jsonStream.JsonStream.STRING(value):
+        Std.parseFloat(value);
       case jsonStream.JsonStream.NUMBER(value):
         value;
       case NULL:
         null;
       case stream:
-        throw JsonDeserializerError.UNMATCHED_JSON_TYPE(stream, [ "NUMBER", "NULL"]);
+        throw JsonDeserializerError.UNMATCHED_JSON_TYPE(stream, [ "STRING", "NUMBER", "NULL"]);
     }
   }
 }
@@ -198,11 +216,14 @@ class BoolDeserializerPlugin
   {
     switch (self.underlying)
     {
+      case jsonStream.JsonStream.STRING("false"): false;
+      case jsonStream.JsonStream.STRING("true"): true;
+      case jsonStream.JsonStream.STRING(_): null;
       case jsonStream.JsonStream.FALSE: false;
       case jsonStream.JsonStream.TRUE: true;
       case NULL: null;
       case stream:
-        throw JsonDeserializerError.UNMATCHED_JSON_TYPE(stream, [ "FALSE", "TRUE", "NULL"]);
+        throw JsonDeserializerError.UNMATCHED_JSON_TYPE(stream, [ "STRING", "FALSE", "TRUE", "NULL"]);
     }
   }
 }

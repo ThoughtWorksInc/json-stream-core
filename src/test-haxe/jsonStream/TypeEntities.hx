@@ -19,7 +19,7 @@
 
 package jsonStream;
 
-#if java
+#if (java && scala)
 import scala.collection.immutable.Seq;
 import scala.collection.immutable.Set;
 import scala.collection.immutable.Map;

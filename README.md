@@ -1,7 +1,7 @@
 JSON Stream
 ===========
 
-<div align="right"><a href="https://travis-ci.org/qifun/json-stream"><img alt="Build Status" src="https://travis-ci.org/qifun/json-stream.png?branch=master"/></a></div>
+<div align="right"><a href="https://travis-ci.org/ThoughtWorksInc/json-stream"><img alt="Build Status" src="https://travis-ci.org/ThoughtWorksInc/json-stream.png?branch=master"/></a></div>
 
 **JSON Stream** is a efficient universal serialization framework for JSON and BSON.
 

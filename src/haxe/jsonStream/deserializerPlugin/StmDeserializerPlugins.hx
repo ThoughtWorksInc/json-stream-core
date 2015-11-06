@@ -21,7 +21,9 @@ package jsonStream.deserializerPlugin;
 
 
 
-#if (java || macro)
+#if (scala && (java || macro))
+
+#if scala
 import scala.concurrent.stm.Ref;
 import scala.concurrent.stm.RefView;
 import scala.concurrent.stm.TSet;
@@ -30,6 +32,8 @@ import scala.concurrent.stm.TArray;
 import scala.concurrent.stm.TArrayView;
 import scala.concurrent.stm.japi.STM;
 import scala.Tuple2;
+#end
+
 import haxe.macro.Context;
 import haxe.macro.TypeTools;
 import com.dongxiguo.continuation.utils.Generator;

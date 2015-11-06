@@ -20,17 +20,20 @@
 package jsonStream.serializerPlugin;
 
 
-#if (java || macro)
+#if (scala && (java || macro))
+
 import com.dongxiguo.continuation.Continuation;
 import com.dongxiguo.continuation.utils.Generator;
 import jsonStream.JsonSerializer;
 import jsonStream.JsonStream;
 import haxe.macro.Context;
 import haxe.macro.TypeTools;
+#if scala
 import scala.concurrent.stm.Ref;
 import scala.concurrent.stm.TSet;
 import scala.concurrent.stm.TMap;
 import scala.concurrent.stm.TArray;
+#end
 
 @:final
 class StmRefSerializerPlugin

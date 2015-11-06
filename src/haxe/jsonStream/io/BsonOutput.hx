@@ -19,7 +19,7 @@
 
 package jsonStream.io;
 
-#if java
+#if (java && scala)
 import reactivemongo.bson.buffer.WritableBuffer;
 
 @:forward(writeByte, writeInt, writeLong, writeDouble, writeString, writeCString, index, setInt)

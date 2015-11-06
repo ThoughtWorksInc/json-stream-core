@@ -20,7 +20,7 @@
 package jsonStream.io;
 
 
-#if (java)
+#if (java && scala)
 
 import reactivemongo.bson.buffer.ReadableBuffer;
 

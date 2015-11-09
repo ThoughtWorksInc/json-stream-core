@@ -12,8 +12,14 @@ class OuterClass
 
   public var other:ItemEntities.IT5;
 
+  public var d:Dynamic;
+
+  public var f:Float;
+
+  public var single:Single;
+
   @:transient
-  public var xxx:Int;
+  public var transient:Int;
 }
 
 

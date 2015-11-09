@@ -95,9 +95,7 @@ class SwaggerExporterGenerator {
       case TAbstract(_.get() => abstractType, _):
         throw "Not implemented";
       default:
-        macro {
-          type: "object"
-        }
+        macro {}
     }
   }
 

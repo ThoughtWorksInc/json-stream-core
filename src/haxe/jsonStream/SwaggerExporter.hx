@@ -1,7 +1,5 @@
 package jsonStream;
 
-import haxe.macro.ExprTools;
-import haxe.macro.MacroStringTools;
 import haxe.ds.StringMap;
 
 #if macro
@@ -79,14 +77,15 @@ class SwaggerExporterGenerator {
     switch followedType {
       case TInst(_.get() => classType, _) if (!isAbstract(classType)):
         if (classType.meta.has(":final")) {
-           var contextGenerator = getContextGenerator();
-           contextGenerator.insert(classType.module, classType.name, function() return contextGenerator.classSchema(classType));
-           var refUri = '#${classType.module}/${classType.name}';
-           macro {
-             var __ref:Dynamic = {}
-             Reflect.setField(__ref, "$ref", $v{refUri});
-             __ref;
-           }
+          var contextGenerator = getContextGenerator();
+          contextGenerator.insert(classType.module, classType.name, function() return contextGenerator.classSchema(classType));
+          var refUri = '#${classType.module}/${classType.name}';
+          macro {
+            var __ref:Dynamic = {}
+            // Workaround to avoid inline for neko target
+            (Reflect.setField)(__ref, "$ref", $v{refUri});
+            __ref;
+          }
         } else {
           throw "Not implemented";
         }

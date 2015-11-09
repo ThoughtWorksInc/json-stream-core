@@ -16,7 +16,9 @@ class OuterClass
 
   public var f:Float;
 
+#if (java || cs)
   public var single:Single;
+#end
 
   @:transient
   public var transient:Int;

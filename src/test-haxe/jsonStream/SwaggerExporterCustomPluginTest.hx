@@ -22,10 +22,12 @@ class SwaggerExporterCustomPluginTest extends JsonTestCase {
       type: "number",
       format: "double"
     }, moduleSchemaJson.OuterClass.properties.f);
+#if (java || cs)
     assertDeepEquals({
       type: "number",
       format: "float"
     }, moduleSchemaJson.OuterClass.properties.single);
+#end
     assertEquals(null, moduleSchemaJson.OuterClass.properties.transient);
 
 

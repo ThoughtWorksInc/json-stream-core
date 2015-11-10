@@ -125,7 +125,7 @@ developers := List(
 
 haxelibContributors := Seq("Atry")
 
-haxelibReleaseNote := "Initial release to haxelib"
+haxelibReleaseNote := "Add ability to export schema in swagger spec format."
 
 haxelibTags ++= Seq(
   "cross", "cpp", "cs", "flash", "java", "javascript", "js", "neko", "php", "python", "nme",

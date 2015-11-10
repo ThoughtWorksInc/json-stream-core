@@ -19,6 +19,13 @@ class SwaggerExporterCustomPluginTest extends JsonTestCase {
 
     assertDeepEquals({}, moduleSchemaJson.OuterClass.properties.d);
     assertDeepEquals({
+      type: "array",
+      items: {
+        type: "integer",
+        description: "custom description"
+      }
+    }, moduleSchemaJson.OuterClass.properties.v);
+    assertDeepEquals({
       type: "number",
       format: "double"
     }, moduleSchemaJson.OuterClass.properties.f);

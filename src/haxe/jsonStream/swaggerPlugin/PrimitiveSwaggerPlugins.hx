@@ -81,7 +81,7 @@ class StringSwaggerPlugin {
 @:final
 class ArraySwaggerPlugin {
 
-  public static function elementHint<Element>(typeHint:SwaggerPluginTypeHint<Array<Element>>):Element return null;
+  public static function elementHint<Element>(typeHint:SwaggerPluginTypeHint<Array<Element>>):SwaggerPluginTypeHint<Element> return null;
 
   macro public static function pluginSchema<Element>(typeHint:ExprOf<SwaggerPluginTypeHint<Array<Element>>>):Expr return {
     macro {
@@ -95,7 +95,7 @@ class ArraySwaggerPlugin {
 @:final
 class VectorSwaggerPlugin {
 
-  public static function elementHint<Element>(typeHint:SwaggerPluginTypeHint<Vector<Element>>):Element return null;
+  public static function elementHint<Element>(typeHint:SwaggerPluginTypeHint<Vector<Element>>):SwaggerPluginTypeHint<Element> return null;
 
   macro public static function pluginSchema<Element>(typeHint:ExprOf<SwaggerPluginTypeHint<Vector<Element>>>):Expr return {
     macro {

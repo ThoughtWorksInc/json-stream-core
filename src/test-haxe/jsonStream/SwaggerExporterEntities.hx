@@ -3,6 +3,7 @@ package jsonStream;
 /**
  * Blahblah `class OuterClass {}` **bold text**
  **/
+import haxe.ds.Vector;
 @:final
 class OuterClass
 {
@@ -19,6 +20,8 @@ class OuterClass
 #if (java || cs)
   public var single:Single;
 #end
+
+  public var v:Vector<Int>;
 
   @:transient
   public var transient:Int;

@@ -49,6 +49,14 @@ class SwaggerExporterCustomPluginTest extends JsonTestCase {
       description: "custom description"
     }, Reflect.field(moduleSchemaJson.InnerClass.properties, "foo-bar"));
 
+    assertDeepEquals({ type: "string" }, moduleSchemaJson.ChildClass.allOf[1].properties.childField);
+    assertDeepEquals("object", moduleSchemaJson.ChildClass.allOf[1].type);
+    assertDeepEquals("#jsonStream.SwaggerExporterEntities/SuperClass.template", Reflect.field(moduleSchemaJson.ChildClass.allOf[0], "$ref"));
+    assertDeepEquals({ type: "string" }, Reflect.field(moduleSchemaJson, "SuperClass.template").allOf[1].properties.superField);
+    assertDeepEquals("#jsonStream.SwaggerExporterEntities/AbstractSuperClass.template", Reflect.field(Reflect.field(moduleSchemaJson, "SuperClass.template").allOf[0], "$ref"));
+    assertDeepEquals("object", Reflect.field(moduleSchemaJson, "SuperClass.template").allOf[1].type);
+    assertDeepEquals("object", Reflect.field(moduleSchemaJson, "AbstractSuperClass.template").type);
+    assertDeepEquals({ type: "string" }, Reflect.field(moduleSchemaJson, "AbstractSuperClass.template").properties.abstractSuperField);
   }
 
 }

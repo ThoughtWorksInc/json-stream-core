@@ -25,6 +25,11 @@ class OuterClass
 
   @:transient
   public var transient:Int;
+
+  public var childClass:ChildClass;
+
+  public var superClass:SuperClass;
+
 }
 
 
@@ -39,5 +44,24 @@ class InnerClass
   public var s:String;
 
   public var nestedInner:InnerClass;
+
+}
+
+class AbstractSuperClass
+{
+  public var abstractSuperField:String;
+}
+
+class SuperClass extends AbstractSuperClass
+{
+  public function new() {}
+  public var superField:String;
+}
+
+@:final
+class ChildClass extends SuperClass
+{
+
+  public var childField:String;
 
 }

@@ -63,31 +63,35 @@ class SwaggerExporterGenerator {
     allGenerators[allGenerators.length - 1];
   }
 
-  public function tryAddSchema(type:Type):Void return {
+  public function addClassType(classType:ClassType):Void {
+    if (classType.meta.has(":final")) {
+      insert(classType.module, classType.name, function() return classSchema(classType));
+    } else {
+      insert(classType.module, classType.name, function() return macro {}); // TODO: List all possible child classes
+      insert(classType.module, '${classType.name}.template', function() return classSchema(classType));
+    }
+  }
+
+  public function tryAddSchema(type:Type):Void {
     switch type {
-      case TInst(_.get() => classType, _) if (!isAbstract(classType)):
-        insert(classType.module, classType.name, function() return classSchema(classType));
+      case TInst(_.get() => classType, _):
+        addClassType(classType);
       default:
-// TODO:
     }
   }
 
   public static function generatedSchema(type:Type):Expr return {
     var followedType = Context.follow(type);
     switch followedType {
-      case TInst(_.get() => classType, _) if (!isAbstract(classType)):
-        if (classType.meta.has(":final")) {
-          var contextGenerator = getContextGenerator();
-          contextGenerator.insert(classType.module, classType.name, function() return contextGenerator.classSchema(classType));
-          var refUri = '#${classType.module}/${classType.name}';
-          macro {
-            var __ref:Dynamic = {}
-            // Workaround to avoid inline for neko target
-            (Reflect.setField)(__ref, "$ref", $v{refUri});
-            __ref;
-          }
-        } else {
-          throw "Not implemented";
+      case TInst(_.get() => classType, _):
+        var contextGenerator = getContextGenerator();
+        contextGenerator.addClassType(classType);
+        var refUri = '#${classType.module}/${classType.name}';
+        macro {
+          var __ref:Dynamic = {}
+          // Workaround to avoid inline for neko target
+          (Reflect.setField)(__ref, "$ref", $v{refUri});
+          __ref;
         }
       case TEnum(_.get() => enumType, _):
         throw "Not implemented";
@@ -135,13 +139,25 @@ class SwaggerExporterGenerator {
           continue;
       }
     }
+    var bodyTemplate = macro {
+      type: "object",
+      properties: __objectProperties
+    }
+    var schemaDeclearation = switch classType.superClass {
+      case null:
+        bodyTemplate;
+      case { t : _.get() => { module: superClassModule, name: superClassName } }:
+        var refName = '#$superClassModule/$superClassName.template';
+        macro {
+          var __mixin = {}
+          Reflect.setField(__mixin, "$ref", $v{refName});
+          { allOf : [__mixin, $bodyTemplate] }
+        }
+    }
     macro {
       var __objectProperties:Dynamic = {};
       {$a{propertiesExprs}}
-      {
-        type: "object",
-        properties: __objectProperties
-      }
+      $schemaDeclearation;
     }
   }
 }

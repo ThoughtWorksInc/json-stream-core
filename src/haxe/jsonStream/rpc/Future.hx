@@ -74,6 +74,32 @@ abstract Future1<AwaitResult>(dotnet.system.Action2<cs.system.Action_1<AwaitResu
   }
 }
 
+#elseif js
+
+abstract Future0(js.Promise<Dynamic>) {
+  public inline function new(startFunction:(Void->Void)->Catcher->Void):Future0
+  {
+    this = new js.Promise<Dynamic>(cast startFunction);
+  }
+
+  public inline function start(completeHandler:Void->Void, errorHandler:Catcher):Void
+  {
+    this.then(cast completeHandler, cast errorHandler);
+  }
+}
+
+abstract Future1<AwaitResult>(js.Promise<AwaitResult>) {
+  public inline function new(startFunction:(AwaitResult->Void)->Catcher->Void):Future0
+  {
+    this = new js.Promise<AwaitResult>(cast startFunction);
+  }
+
+  public inline function start(completeHandler:AwaitResult->Void, errorHandler:Catcher):Void
+  {
+    this.then(cast completeHandler, cast errorHandler);
+  }
+}
+
 #else
 
 @:dox(hide)

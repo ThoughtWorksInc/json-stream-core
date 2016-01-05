@@ -34,16 +34,3 @@ class TypeEntitiesSerializer { }
 @:build(jsonStream.JsonDeserializer.generateDeserializer(["jsonStream.TypeEntities"]))
 class TypeEntitiesDeserializer { }
 
-
-@:build(jsonStream.JsonSerializer.generateSerializer(["jsonStream.StmEntity"]))
-class StmEntitySerializer { }
-
-@:build(jsonStream.JsonDeserializer.generateDeserializer(["jsonStream.StmEntity"]))
-class StmEntityDeserializer { }
-
-
-@:build(jsonStream.JsonSerializer.generateSerializer(["jsonStream.AbstractEntities"]))
-class AbstractSerializer { }
-
-@:build(jsonStream.JsonDeserializer.generateDeserializer(["jsonStream.AbstractEntities"]))
-class AbstractDeserializer { }

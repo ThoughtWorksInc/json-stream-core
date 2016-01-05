@@ -2,11 +2,6 @@ enablePlugins(AllHaxePlugins)
 
 resolvers in ThisBuild += "Typesafe repository releases" at "http://repo.typesafe.com/typesafe/releases/"
 
-for (c <- Seq(Compile, Test)) yield {
-  haxeOptions in c ++=
-    Seq("-D", "scala")
-}
-
 val haxelibs = Map(
   "continuation" -> DependencyVersion.SpecificVersion("1.3.2"),
   "microbuilder-HUGS" -> DependencyVersion.SpecificVersion("2.0.1")
@@ -28,7 +23,7 @@ for (c <- Seq(CSharp, TestCSharp)) yield {
 
 releaseUseGlobalVersion := false
 
-releaseCrossBuild := true
+releaseCrossBuild := false
 
 haxeOptions in CSharp ++= Seq("-D", "dll")
 
@@ -40,19 +35,9 @@ haxeOptions in Compile ++= Seq("--macro", "com.qifun.util.Patcher.noExternalDoc(
 
 javacOptions in Compile in compile += "-Xlint:-deprecation"
 
-libraryDependencies += "org.scala-stm" %% "scala-stm" % "0.7"
-
 libraryDependencies += "com.qifun" % "haxe-util" % "0.1.0" % HaxeJava classifier "haxe-java"
 
-libraryDependencies += "com.qifun" %% "haxe-scala-library" % "0.2.1" % HaxeJava classifier "haxe-java"
-
 libraryDependencies += "com.qifun.sbt-haxe" %% "test-interface" % "0.1.0" % Test
-
-libraryDependencies += "com.qifun" %% "haxe-scala-stm" % "0.1.4" % HaxeJava classifier "haxe-java"
-
-libraryDependencies += "org.reactivemongo" %% "reactivemongo-bson" % "0.11.6"
-
-crossScalaVersions := Seq("2.10.4", "2.11.2")
 
 doc in Compile := {
   (doc in Compile).result.value.toEither match {
@@ -68,11 +53,15 @@ doc in Compile := {
 
 organization := "com.thoughtworks.microbuilder"
 
-name := "json-stream"
+name := "json-stream-core"
 
 homepage := Some(url(s"https://github.com/ThoughtWorksInc/${name.value}"))
 
 startYear := Some(2014)
+
+autoScalaLibrary := false
+
+crossPaths := false
 
 licenses := Seq("Apache" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
@@ -125,7 +114,7 @@ developers := List(
 
 haxelibContributors := Seq("Atry")
 
-haxelibReleaseNote := "Add ability to export schema in swagger spec format."
+haxelibReleaseNote := "Remove Scala specific features"
 
 haxelibTags ++= Seq(
   "cross", "cpp", "cs", "flash", "java", "javascript", "js", "neko", "php", "python", "nme",

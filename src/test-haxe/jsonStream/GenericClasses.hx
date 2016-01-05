@@ -18,7 +18,6 @@
  */
 
 package jsonStream;
-import jsonStream.crossPlatformTypes.StmMap;
 import haxe.ds.Vector;
 
 interface IHasArray<A>
@@ -60,5 +59,4 @@ class FinalClass2<A, B> extends BaseClass<A,B>
   var vector3:Vector<B>;
   var vector4:Vector<String>;
 
-  var dictionary:StmMap<String, Int>;
 }

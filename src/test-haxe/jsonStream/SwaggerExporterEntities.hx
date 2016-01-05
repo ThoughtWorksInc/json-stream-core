@@ -11,7 +11,7 @@ class OuterClass
 
   public var innerClass:InnerClass;
 
-  public var other:ItemEntities.IT5;
+  public var other:SimpleEntities.CaseClass;
 
   public var d:Dynamic;
 

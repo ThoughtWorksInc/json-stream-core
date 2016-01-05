@@ -444,12 +444,6 @@ class TextParser
 
   public static function parseIterator(iterator:Iterator<Int>):JsonStream
   {
-    #if (java && scala)
-    var scalaIterator:scala.collection.Iterator<Int> = Std.instance(iterator, scala.collection.Iterator);
-    if (scalaIterator != null) {
-      return parse(new GenericIteratorSource<scala.collection.Iterator<Int>>(scalaIterator), new TextParseContext());
-    }
-    #end
     #if java
     var javaIterator:java.util.Iterator<Int> = Std.instance(iterator, java.util.Iterator);
     if (javaIterator != null) {

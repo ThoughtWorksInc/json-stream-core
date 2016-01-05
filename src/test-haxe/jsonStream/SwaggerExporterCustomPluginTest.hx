@@ -15,7 +15,7 @@ class SwaggerExporterCustomPluginTest extends JsonTestCase {
     assertEquals("object", moduleSchemaJson.OuterClass.type);
 
     assertEquals("#jsonStream.SwaggerExporterEntities/InnerClass", Reflect.field(moduleSchemaJson.OuterClass.properties.innerClass, "$ref"));
-    assertEquals("#jsonStream.ItemEntities/IT5", Reflect.field(moduleSchemaJson.OuterClass.properties.other, "$ref"));
+    assertEquals("#jsonStream.SimpleEntities/CaseClass", Reflect.field(moduleSchemaJson.OuterClass.properties.other, "$ref"));
 
     assertDeepEquals({}, moduleSchemaJson.OuterClass.properties.d);
     assertDeepEquals({

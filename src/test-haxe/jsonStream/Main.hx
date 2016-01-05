@@ -20,7 +20,6 @@
 package jsonStream;
 import haxe.unit.TestRunner;
 import jsonStream.testUtil.JsonTestCase;
-import jsonStream.CSharpPluginsTest;
 
 
 class Main
@@ -29,7 +28,6 @@ class Main
   static function testAll()
   {
     var runner = new TestRunner();
-	runner.add(new ItemTest());
     runner.add(new RawTest());
     runner.add(new SimpleTest());
     runner.add(new SimpleAbstractTest());
@@ -37,8 +35,6 @@ class Main
     runner.add(new Rpc2TestIo());
     runner.add(new GenericClassTest());
     runner.add(new TextTest());
-    runner.add(new CSharpPluginsTest());
-    runner.add(new AbstractPluginTest());
     runner.add(new NoConstructorTest());
     var isSuccess = runner.run();
     if (!isSuccess)

@@ -143,7 +143,7 @@ class Sample
 JSON Stream is available on both [haxelib](http://lib.haxe.org/p/json-stream-core) and [maven central repository](https://search.maven.org/#artifactdetails%7Ccom.thoughtworks.microbuilder%7Cjson-stream-core%7C3.0.0%7Cjar).
 You can set-up the dependency to JSON Stream with either [sbt-haxe](https://github.com/ThoughtWorksInc/sbt-haxe) or manually managed `build.hxml`.
 
-For sbt-haxe managed project, add the following settings into your `build.sbt`
+For sbt-haxe managed projects, add the following settings into your `build.sbt`
 
 ``` sbt
 for (c <- AllHaxeConfigurations) yield {
@@ -151,7 +151,7 @@ for (c <- AllHaxeConfigurations) yield {
 }
 ```
 
-For manually managed `build.hxml`, add the following options into `build.hxml`:
+For manually managed projects, add the following options into your `build.hxml`:
 
 ```
 -lib json-stream-core

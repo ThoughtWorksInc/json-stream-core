@@ -54,7 +54,7 @@ class Int64SerializerPlugin
     else
     {
       var i64 = (self:Dynamic);
-      INT64(Int64.getHigh(toInt64(i64)), Int64.getLow(toInt64(i64)));
+      INT64(toInt64(i64).high, toInt64(i64).low);
     }
   }
 }

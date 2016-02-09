@@ -41,12 +41,7 @@ before_cache:
   - find $HOME/.sbt -name '*.lock' | xargs rm
   - find $HOME/.ivy2 -name 'ivydata-*.properties' | xargs rm
 
-scala:
-  - 2.11.2
-  - 2.10.4
-
 jdk:
-  - oraclejdk8
   - openjdk7
   # Disabled due to https://github.com/HaxeFoundation/haxe/issues/4220
   # - openjdk6

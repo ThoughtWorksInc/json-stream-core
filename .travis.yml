@@ -31,11 +31,8 @@ before_install:
   - if [[ "$HAXE_TARGET" = "cs" ]]; then travis_retry haxelib install hxcs --always; fi
   - if [[ "$HAXE_TARGET" = "cpp" ]]; then travis_retry haxelib install hxcpp --always; fi
 
-install:
-  - sbt ";++$TRAVIS_SCALA_VERSION;haxelibInstallDependencies;update"
-
 script:
-  - sbt ";++$TRAVIS_SCALA_VERSION;$SBT_COMMAND"
+  - sbt ";++$TRAVIS_SCALA_VERSION;haxelibInstallDependencies;$SBT_COMMAND"
 
 before_cache:
   - find $HOME/.sbt -name '*.lock' | xargs rm

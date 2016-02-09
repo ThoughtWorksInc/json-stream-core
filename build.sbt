@@ -69,22 +69,6 @@ releasePublishArtifactsAction := PgpKeys.publishSigned.value
 
 import ReleaseTransformations._
 
-releaseProcess := Seq[ReleaseStep](
-  checkSnapshotDependencies,
-  inquireVersions,
-  runClean,
-  runTest,
-  setReleaseVersion,
-  commitReleaseVersion,
-  tagRelease,
-  releaseStepTask(publish in Haxe),
-  publishArtifacts,
-  setNextVersion,
-  commitNextVersion,
-  releaseStepCommand("sonatypeRelease"),
-  pushChanges
-)
-
 scmInfo := Some(ScmInfo(
   url(s"https://github.com/ThoughtWorksInc/${name.value}"),
   s"scm:git:git://github.com/ThoughtWorksInc/${name.value}.git",
@@ -121,3 +105,15 @@ haxelibTags ++= Seq(
   "marshaller", "serialization", "serializer", "utility",
   "json", "bson"
 )
+
+releaseProcess := {
+  releaseProcess.value.patch(releaseProcess.value.indexOf(publishArtifacts), Seq[ReleaseStep](releaseStepTask(publish in Haxe)), 0)
+}
+
+releaseProcess := {
+  releaseProcess.value.patch(releaseProcess.value.indexOf(pushChanges), Seq[ReleaseStep](releaseStepCommand("sonatypeRelease")), 0)
+}
+
+releaseProcess -= runClean
+
+releaseProcess -= runTest

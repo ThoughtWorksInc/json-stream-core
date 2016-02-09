@@ -1,4 +1,7 @@
 target/
 /bin/
 .*
+
+# Files created for deployment
+secret/
 local.sbt

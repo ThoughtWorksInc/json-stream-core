@@ -1,5 +1,7 @@
 package jsonStream;
 
+#if sys
+
 import haxe.io.Bytes;
 
 using jsonStream.SwaggerPlugins;
@@ -11,3 +13,5 @@ class SwaggerExporterMain {
     Sys.stdout().write(Bytes.ofString(haxe.format.JsonPrinter.print(schemaJson, null, "\t")));
   }
 }
+
+#end

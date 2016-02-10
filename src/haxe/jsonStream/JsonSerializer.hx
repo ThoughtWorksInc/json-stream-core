@@ -1018,7 +1018,8 @@ class JsonSerializerRuntime
 
   @:noUsing
   public static
-  #if (!java) inline #end // Don't inline for Java targets, because of https://github.com/HaxeFoundation/haxe/issues/3094
+  // Don't inline for C++ targets, because of https://github.com/HaxeFoundation/haxe/issues/4842
+  #if (!cpp) inline #end
   function isNotNull<T>(maybeNull:Null<T>):Bool return maybeNull != null;
 
   @:noUsing

@@ -21,14 +21,14 @@ package jsonStream.rpc;
 import jsonStream.JsonStream;
 
 
-@:nativeGen
+#if (!cpp) @:nativeGen #end
 interface IJsonService
 {
   function push(data:JsonStream):Void;
   function apply(request:JsonStream, responseHandler:IJsonResponseHandler):Void;
 }
 
-@:nativeGen
+#if (!cpp) @:nativeGen #end
 interface IJsonResponseHandler
 {
   function onSuccess(stream:JsonStream):Void;

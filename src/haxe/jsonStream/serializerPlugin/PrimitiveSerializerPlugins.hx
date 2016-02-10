@@ -47,13 +47,13 @@ class Int64SerializerPlugin
   /* inline */ // 如果加入inline，会导致Java平台编译错误
   public static function pluginSerialize(self:JsonSerializerPluginData<Int64>):JsonStream return
   {
-    if (self == null)
+    var i64 = (self:Dynamic);
+    if (i64 == null)
     {
       NULL;
     }
     else
     {
-      var i64 = (self:Dynamic);
       INT64(toInt64(i64).high, toInt64(i64).low);
     }
   }

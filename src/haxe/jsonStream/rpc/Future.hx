@@ -135,7 +135,7 @@ abstract Future1<AwaitResult>(IFuture1<AwaitResult>)
 }
 
 @:dox(hide)
-@:nativeGen
+#if (!cpp) @:nativeGen #end
 interface ICompleteHandler0
 {
   function onSuccess():Void;
@@ -143,7 +143,7 @@ interface ICompleteHandler0
 }
 
 @:dox(hide)
-@:nativeGen
+#if (!cpp) @:nativeGen #end
 interface ICompleteHandler1<AwaitResult>
 {
   function onSuccess(awaitResult:AwaitResult):Void;
@@ -151,21 +151,21 @@ interface ICompleteHandler1<AwaitResult>
 }
 
 @:dox(hide)
-@:nativeGen
+#if (!cpp) @:nativeGen #end
 interface ICatcher
 {
   function apply(error:Dynamic):Void;
 }
 
 @:dox(hide)
-@:nativeGen
+#if (!cpp) @:nativeGen #end
 interface IFuture1<AwaitResult>
 {
   function start(handler:ICompleteHandler1<AwaitResult>):Void;
 }
 
 @:dox(hide)
-@:nativeGen
+#if (!cpp) @:nativeGen #end
 interface IFuture0
 {
   function start(handler:ICompleteHandler0):Void;

@@ -35,7 +35,6 @@ class Main
     runner.add(new Rpc2TestIo());
     runner.add(new GenericClassTest());
     runner.add(new TextTest());
-    runner.add(new NoConstructorTest());
     var isSuccess = runner.run();
     if (!isSuccess)
     {

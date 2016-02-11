@@ -39,17 +39,7 @@ libraryDependencies += "com.qifun" % "haxe-util" % "0.1.0" % HaxeJava classifier
 
 libraryDependencies += "com.qifun.sbt-haxe" %% "test-interface" % "0.1.0" % Test
 
-doc in Compile := {
-  (doc in Compile).result.value.toEither match {
-    case Left(_) => {
-      // Ignore error
-      (target in doc in Compile).value
-    }
-    case Right(right) => {
-      right
-    }
-  }
-}
+doc in Compile <<= doc in Haxe
 
 organization := "com.thoughtworks.microbuilder"
 

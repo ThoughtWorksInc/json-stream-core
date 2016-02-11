@@ -35,7 +35,6 @@ typedef Catcher = Dynamic->Void;
 **/
 #if cs
 
-@:dox(hide)
 abstract Future0(dotnet.system.Action2<dotnet.system.Action, cs.system.Action_1<Dynamic>>)
 {
 
@@ -55,7 +54,6 @@ abstract Future0(dotnet.system.Action2<dotnet.system.Action, cs.system.Action_1<
 
 }
 
-@:dox(hide)
 abstract Future1<AwaitResult>(dotnet.system.Action2<cs.system.Action_1<AwaitResult>, cs.system.Action_1<Dynamic>>)
 {
 
@@ -102,7 +100,6 @@ abstract Future1<AwaitResult>(js.Promise<AwaitResult>) {
 
 #else
 
-@:dox(hide)
 abstract Future0(IFuture0)
 {
 
@@ -118,7 +115,6 @@ abstract Future0(IFuture0)
 
 }
 
-@:dox(hide)
 abstract Future1<AwaitResult>(IFuture1<AwaitResult>)
 {
 

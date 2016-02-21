@@ -330,7 +330,12 @@ class VectorDeserializerPlugin
         if (generator != null)
         {
           // Don't use haxe.ds.Vector.fromArrayCopy because it will throw java.lang.ClassCastException: [Ljava.lang.Object; cannot be cast to [Ljava.lang.String;
-          arrayToVector(
+          #if flash
+            // Workaround for https://github.com/HaxeFoundation/haxe/issues/4866
+            (arrayToVector:Dynamic)
+          #else
+            arrayToVector
+          #end(
             [
               for (element in generator)
               {
@@ -340,7 +345,12 @@ class VectorDeserializerPlugin
         }
         else
         {
-          arrayToVector(
+          #if flash
+            // Workaround for https://github.com/HaxeFoundation/haxe/issues/4866
+            (arrayToVector:Dynamic)
+          #else
+            arrayToVector
+          #end(
             [
               for (element in value)
               {

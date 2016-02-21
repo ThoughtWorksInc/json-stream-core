@@ -88,7 +88,7 @@ developers := List(
 
 haxelibContributors := Seq("Atry")
 
-haxelibReleaseNote := "Fix compilation error for C++ target"
+haxelibReleaseNote := "Fix compilation error for Flash target"
 
 haxelibTags ++= Seq(
   "cross", "cpp", "cs", "flash", "java", "javascript", "js", "neko", "php", "python", "nme",

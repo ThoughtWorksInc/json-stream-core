@@ -366,7 +366,7 @@ class VectorDeserializerPlugin
     var v = new haxe.ds.Vector<Element>(a.length);
     for (i in 0...a.length)
     {
-      #if java
+      #if (java || flash)
         setVectorElement(v, i, a[i]);
       #else
         v[i] = a[i];
